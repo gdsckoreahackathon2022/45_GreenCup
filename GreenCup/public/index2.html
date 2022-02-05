@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GreenCup</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/style.css">
+  <link rel="stylesheet" href="dist/css/style2.css">
+  <link rel="stylesheet" href="dist/css/map.css"/>
+
+  <script type="text/javascript" src=""></script>
+
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  <script type="text/javascript" src=""></script>
+
+</head>
+
+
+<body>
+    <div id="wrap">
+        <header class="header">
+        <div class="logophoto"> 
+          <img id="logo_img" src="dist/img/cup.png" class="img-circle" alt="Logo Image">
+        </div>>
+          <div class="logo">GreenCup</div>
+        </header>
+        <aside class="aside">
+          <div class="user-panel">
+            <button type="button" id="login" onclick="googlelogIn()">구글로그인</button>
+
+            <div class="profilebar">
+              <div id=profile  class="image">
+                <img id="profile_img" src="dist/img/toystory.png" class="img-circle" alt="User Image">
+              </div>
+              <div class="info" id="profile_info">
+                <a id="profile_name" href="#" class="d-block">Buzz Lightyear</a>
+              </div>
+            </div>
+      
+            <button type="button" id="logout" style="display: none;" onclick="logout()">로그아웃</button>
+          </div>
+          <hr class="loginline">
+          <div class="menu">
+            <ul class="sidebar">
+              <div class="sidebar1" >
+                  <a class="sidebar1-link" aria-current="page" href="index.html">프로젝트 소개</a>
+                
+              </div>
+              <div class="sidebar2"> 
+                  <a class="sidebar2-link" href="index2.html">지도</a>
+              </div>
+              <div class="sidebar3">       
+                  <a class="sidebar3-link" href="index3.html">마이페이지</a>
+                
+             </div>                     
+            </ul>
+          </div>           
+        </aside>
+
+        <section class="article1">
+          <div class="infoBox">
+            현재시간
+            <h1>현재시간</h1>
+            <h3>00:00</h3>
+          </div>
+          <script>
+            const clockContainer = document.querySelector(".infoBox");
+            const clockTitle = clockContainer.querySelector("h1");
+            const dateTitle=clockContainer.querySelector("h3");
+        
+            function getTime(){
+                const date=new Date();
+                const years=date.getFullYear();
+                const months=date.getMonth();
+                const dates=date.getDate();
+                const minutes = date.getMinutes();
+                const hours=date.getHours();
+                const seconds=date.getSeconds();
+                dateTitle.innerText = `${years}/${months+1}/${dates}`;
+                clockTitle.innerText = `${
+                hours < 10 ? `0${hours}` : hours}:${minutes<10 ? `0${minutes}` : minutes}:${
+                seconds < 10 ? `0${seconds}` : seconds}`;
+            }
+            function init(){
+                getTime();
+                setInterval(getTime,1000);
+            }
+        
+            init();
+          </script>
+          <div id="search"> 
+            <input id="search_input" placeholder="목적지를 입력해주세요" />
+          </div>
+          <button id="search_button">검색</button>
+          
+          <div id="current">현재위치</div>
+          <div id="map" style="width:100%; height:100%;"></div> <!-- 지도가 화면에 꽉 차도록-->
+          <script type="text/javascript" src="dist/js/data.js"></script>
+          <script>
+            var mapOptions = {
+            center: new naver.maps.LatLng(37.3595704, 127.105399),
+            zoom: 10,
+            };
+            var map = new naver.maps.Map('map', mapOptions);
+
+            var markerList = [];
+            var infowindowList = [];
+
+            for (var i in data){
+              var target = data[i];
+              var latlng =new naver.maps.LatLng(target.lat, target.lng);
+              marker = new naver.maps.Marker({
+              map: map,
+              position: latlng, 
+              icon: {
+                content: "<div class='marker'></div>",
+                anchor: new naver.maps.Point(12,12)
+                },
+              });
+              var content = `<div class='infowindow_wrap'>
+                <div class='infowindow_title'>${target.title}</div>
+                <div class='infowindow_content'>${target.content}</div>
+                <div class='infowindow_blackcup'>블랙컵: ${target.blackcup}</div>
+                <div class='infowindow_greencup'>그린컵: ${target.greencup}</div>
+                </div>`
+
+              var infowindow = new naver.maps.InfoWindow({
+                content: content,
+                backgroundColor: "#00ff0000",
+                borderColor: "#00ff0000",
+                anchorSize: new naver.maps.Size(0,0) /*말꼬리 삭제*/
+              })
+              markerList.push(marker);
+              infowindowList.push(infowindow);
+              /*배열로 저장된 마커와 infowindow 순서대로 나오게 */
+            }
+
+            for(var i=0, ii = markerList.length; i<ii; i++){
+              naver.maps.Event.addListener(map, "click", ClickMap(i));
+              naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
+            /* 이벤트설정 markerList[i]누르고 싶은 마커의 위치 클릭시 getClickHandler 함수실행*/
+            }
+
+            function ClickMap(i){
+              return function() {
+                var infowindow = infowindowList[i];
+                infowindow.close()
+              };
+            }
+
+            function getClickHandler(i){
+              return function(){
+                var maker = markerList[i];
+                var infowindow = infowindowList[i];
+                if(infowindow.getMap()){
+                    infowindow.close();
+                }else{
+                    infowindow.open(map, marker)
+                }
+              };
+            }
+        
+            $("#current").click(() => {
+              if("geolocation" in navigator){
+                navigator.geolocation.getCurrentPosition(function(position){
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    const latlng = new naver.maps.LatLng(lat, lng);
+                    marker = new naver.maps.Marker({
+                        map: map,
+                        position: latlng,
+                        icon: {
+                            content:
+                            '<img class="pulse" draggable="false" unselectable="on" src="https://myfirstmap.s3.ap-northeast-2.amazonaws.com/circle.png">',
+                            anchor: new naver.maps.Point(11,11)
+                        },
+
+                    });
+                    map.setZoom(14, false);
+                    map.panTo(latlng);
+                });
+
+              }else{
+                alert("위치정보 사용 불가능");
+              }
+            });
+            
+
+            let ps = new kakao.maps.services.Places();
+            let search_arr = []
+            $("#search_input").on("keydown", function(e){
+              if(e.keyCode == 13){
+               let content = $(this).val();
+               ps.keywordSearch(content, placeSearchCB);
+              } 
+            })
+
+            $("#search_button").on("click", function(e){
+              let content = $("#search_input").val()
+              ps.keywordSearch(content, placeSearchCB);
+            })
+
+            function placeSearchCB(data, status, pagination){
+                if(status == kakao.maps.services.Status.OK){
+                  let target = data[0];
+                  const lat = target.y;
+                  const lng = target.x;
+                  const latlng = new naver.maps.LatLng(lat, lng);
+                  marker = new naver.maps.Marker({
+                    position: latlng,
+                    map: map
+                  })
+                  if (search_arr.length == 0){
+                    search_arr.push(marker)
+                  }else{
+                    search_arr.push(marker)
+                    let pre_marker = search_arr.splice(0, 1);
+                    pre_marker[0].setMap(null);
+                  }
+                  map.setZoom(14, false);
+                  map.panTo(latlng);
+                }else{
+                  alert("검색결과가 없습니다. ")
+                }
+            }
+
+            
+          </script>
+
+          <div class="button2">
+            <a class="button2-link" href="#">추가</a>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div class="github">
+            <a class="github-link" href="#">깃허브: https://github.com/gdsckoreahackathon2022/45_GreenCup</a>
+          </div>
+        </footer>
+    </div>
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-firestore.js"></script>
+    <script src="dist/js/nayeon.js"></script>
+</body>
+</html>

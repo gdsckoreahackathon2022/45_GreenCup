@@ -1,0 +1,163 @@
+* {margin: 0; padding: 0;}
+body {
+    background-color: #e3f2fd;
+}
+#wrap {width: 100%; margin: 0 auto;}
+.header {width: 100%; height: 150px; background:#f8f9fa;}
+.aside {float: left; width: 20%; height: 900px; background: rgb(0, 70, 42); }
+.article1 {float: left; width: 80%; height: 900px; background: white;}
+.footer {clear: both; width: 100%; height: 50px; background: rgb(25, 105, 73);}
+
+.logo{
+    color: rgb(0, 70, 42);
+    font-size: 40px;
+    font-weight: bold;
+    position: absolute;
+    left: 20%;
+    top: 50px;
+    font-family: sans-serif;
+}
+
+.logophoto{
+    float: left;
+    margin-left: 80px;
+    margin-top: 30px;
+    width: 300px;
+    height: auto;
+}
+#logo_img{
+    width: 100%;
+    height: 100%;
+}
+
+.user-panel{
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 80px;
+    width: 250px;
+    color: white;
+}
+
+.menu{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center;
+    margin: 10px;
+
+}
+
+.sidebar1{
+    margin-top: 20px;
+    border: 1px solid #f8f9fa;
+    padding: 10px;
+}
+.sidebar2{
+    border: 1px solid #f8f9fa;
+    padding: 10px;
+}
+.sidebar3{
+    border: 1px solid #f8f9fa;
+    padding: 10px;
+}
+
+.github{
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-left: 300px;
+    margin-top: 10px;
+}
+
+.sidebar1-link{
+    color: white;
+    text-decoration: none;
+}
+.sidebar2-link{
+    color: white;
+    text-decoration: none;
+}
+.sidebar3-link{
+    color: white;
+    text-decoration: none;
+}
+
+.github-link{
+    color: white;
+    text-decoration: none;
+}
+
+.loginline{
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 250px;
+    color: white;
+}
+
+#profile{
+    width: 3rem;
+    height: 3rem; 
+    border-radius: 70%;
+    overflow: hidden;
+    margin-left: 80px;
+
+    float: left;
+}
+
+#profile_img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#profile_info{
+    margin-left: 150px;
+}
+
+
+#profile_name{
+    color: white;
+    text-decoration: none;
+}
+
+button{
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 30px;
+    background-color: white;
+}
+
+.intro{
+    font-size: 35px;
+    font-family: sans-serif;
+}
+
+.main{
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+.maintitle{
+    font-size: 25px;
+    font-family: sans-serif;
+}
+
+/* 화면 너비 0 ~ 1200px */
+@media (max-width: 1240px){
+    #wrap {width: 100%;}
+    .article1 {height: 450px;}
+    .article2 {height: 450px;}
+    .article3 {width: 100%;}
+}
+/* 화면 너비 0 ~ 768px */
+@media (max-width: 768px){
+    .aside {width: 100%; height: 300px;}
+    .article1 {width: 50%;}
+    .article2 {width: 50%;}
+}
+/* 화면 너비 0 ~ 480px */
+@media (max-width: 480px){
+    .article1 {width: 100%;}
+    .article2 {width: 100%;}
+}

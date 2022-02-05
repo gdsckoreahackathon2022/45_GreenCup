@@ -1,0 +1,184 @@
+.mypage{
+    float: left;
+    width: 45%;
+    height: 95%;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.mypage2{
+    float: left;
+    width: 45%;
+    height: 95%;
+    background-color: lightgray;
+    margin-left: 50px;
+    margin-top: 20px;
+
+    font-size: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.mypage1{
+    float: left;
+    width: 100%;
+    height: 45%;
+    background-color: lightgray;
+
+    font-size: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.mypage3{
+    float: left;
+    width: 100%;
+    height: 45%;
+    background-color: lightgray;
+    margin-top: 15%;
+
+    font-size: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#img1{
+    float: left;
+    overflow: hidden;
+    width: 100%;
+    height: 40%;
+}
+
+#img2{
+    float: left;
+    overflow: hidden;
+    width: 100%;
+    height: 40%;
+}
+
+#greencup_img{
+    float: left;
+    margin-left: 230px;
+    margin-top: 10px;
+    width: 60%;
+    height: auto;
+}
+
+.greennumber{
+    float: left;
+    width: 10%;
+    margin-left: 250px;
+    margin-top: 10px;
+}
+
+.blacknumber{
+    float: left;
+    width: 10%;
+    margin-left: 250px;
+    margin-top: 10px;
+}
+
+#blackcup_img{
+    float: left;
+    margin-left: 230px;
+    width: 60%;
+    height: auto;
+}
+
+.graph{
+    float: left;
+    margin-top: 40px;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.mypage1_title{
+    margin-top: 20px;
+}
+
+.mypage2_title{
+    margin-top: 20px;
+}
+
+.mypage3_title{
+    margin-top: 20px;
+}
+
+.bank1{
+    margin-top: 100px;
+    border-bottom: 5px solid rgb(0, 70, 42);;
+    padding: 10px;
+}
+.bank2{
+    border-bottom: 5px solid rgb(0, 70, 42);;
+    padding: 10px;
+}
+.bank3{
+    border-bottom: 5px solid rgb(0, 70, 42);;
+    padding: 10px;
+}
+.bank4{
+    border-bottom: 5px solid rgb(0, 70, 42);;
+    padding: 10px;
+}
+
+.bank5{
+    border-bottom: 5px solid rgb(0, 70, 42);;
+    padding: 10px;
+}
+.bank6{
+    border-bottom: 5px solid rgb(0, 70, 42);;
+    padding: 10px;
+}
+.bank7{
+    border-bottom: 5px solid rgb(0, 70, 42);;
+    padding: 10px;
+}
+.bank8{
+    border-bottom: 5px solid rgb(0, 70, 42);;
+    padding: 10px;
+}
+
+.bank1-link{
+    color: black;
+    text-decoration: none;
+}
+.bank2-link{
+    color: black;
+    text-decoration: none;
+}
+.bank3-link{
+    color: black;
+    text-decoration: none;
+}
+
+.bank4-link{
+    color: black;
+    text-decoration: none;
+}
+
+.bank5-link{
+    color: black;
+    text-decoration: none;
+}
+
+.bank6-link{
+    color: black;
+    text-decoration: none;
+}
+
+.bank7-link{
+    color: black;
+    text-decoration: none;
+}
+
+.bank8-link{
+    color: black;
+    text-decoration: none;
+}
+

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GreenCup</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/style.css">
+  <link rel="stylesheet" href="dist/css/style3.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        <header class="header">
+          <div class="logophoto"> 
+            <img id="logo_img" src="dist/img/cup.png" class="img-circle" alt="Logo Image">
+          </div>>
+          <div class="logo">GreenCup</div>
+        </header>
+        <aside class="aside">
+          <div class="user-panel">
+            <button type="button" id="login" onclick="googlelogIn()">구글로그인</button>
+
+            <div class="profilebar">
+              <div id=profile  class="image">
+                <img id="profile_img" src="dist/img/toystory.png" class="img-circle" alt="User Image">
+              </div>
+              <div class="info" id="profile_info">
+                <a id="profile_name" href="#" class="d-block">Buzz Lightyear</a>
+              </div>
+            </div>
+      
+            <button type="button" id="logout" style="display: none;" onclick="logout()">로그아웃</button>
+          </div>
+          <hr class="loginline">
+          <div class="menu">
+            <ul class="sidebar">
+              <div class="sidebar1" >
+                  <a class="sidebar1-link" aria-current="page" href="index.html">프로젝트 소개</a>
+              </div>
+              <div class="sidebar2"> 
+                  <a class="sidebar2-link" href="index2.html">지도</a>
+              </div>
+              <div class="sidebar3">       
+                  <a class="sidebar3-link" href="index3.html">마이페이지</a>
+                
+             </div>                     
+            </ul>
+          </div>           
+        </aside>
+
+        <section class="article1">
+          <div class="mypage">
+            <div class="mypage1">
+              <div class="mypage1_title">보유한 컵</div>
+              
+                <div id ="img1">
+                  <img id="greencup_img" src="dist/img/cup.png" class="img-circle" alt="GreenCup Image">
+                  <h3 class="greennumber">3개</h3>
+                </div>
+                <div id="img2">
+                  <img id="blackcup_img" src="dist/img/cup2.png" class="img-circle" alt="Blackcup Image">
+                  <h3 class="blacknumber">2개</h3>
+                </div>
+              
+            </div>
+
+            <div class="mypage3">
+              <div class="mypage3_title">우리 지역 통계</div>
+              <div class="graph">
+                <img id="graph_img" src="dist/img/model.png" class="img-circle" alt="model Image">
+              </div>
+            </div>
+          </div>
+    
+          <div class="mypage2">
+            <div class="mypage2_title">한컵두컵 그린컵</div>
+            <div class="bank1">
+              <a class="bank1-link" href="https://m.kbsec.com/go.able">KB증권</a>
+            </div>
+            <div class="bank2">
+              <a class="bank2-link" href="https://www.samsungpop.com/mbw/main/main.do?cmd=main">삼성증권</a>
+            </div>
+            <div class="bank3">
+              <a class="bank3-link" href="https://m.nhqv.com/main/main?fm=naver_mad&sn=pblim#">NH투자증권</a>
+            </div>
+            <div class="bank4">
+              <a class="bank4-link" href="https://m.kakaobank.com/">카카오뱅크</a>
+            </div>
+            <div class="bank5">
+              <a class="bank5-link" href="https://open2.shinhaninvest.com/phone/index/0001.jsp">신한금융투자</a>
+            </div>
+            <div class="bank6">
+              <a class="bank6-link" href="https://securities.koreainvestment.com/mobile/index.jsp">한국투자증권</a>
+            </div>
+            <div class="bank7">
+              <a class="bank7-link" href="https://securities.miraeasset.com/mw/main.do">미래에셋증권</a>
+            </div>
+            <div class="bank8">
+              <a class="bank8-link" href="https://www.hanaw.com/main/main/index.cmd">하나금융투자</a>
+            </div>
+          </div>
+
+        </section>
+
+        <footer class="footer">
+          <div class="github">
+            <a class="github-link" href="#">깃허브: https://github.com/gdsckoreahackathon2022/45_GreenCup </a>
+          </div>
+        </footer>
+    </div>
+    
+
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-firestore.js"></script>
+    <script src="dist/js/nayeon.js"></script>
+</body>
+</html>
